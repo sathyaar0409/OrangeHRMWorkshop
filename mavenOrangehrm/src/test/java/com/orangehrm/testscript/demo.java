@@ -18,7 +18,7 @@ import com.orangehrm.objectrepository.homePage;
 @Listeners(com.orangehrm.generic.ListenerImplementation.class)
 public class demo extends BaseClass {
 	@Test
-	public void loginToapp() throws EncryptedDocumentException, IOException, InvalidFormatException {
+	public void loginToapp() throws EncryptedDocumentException, IOException, InvalidFormatException, InterruptedException {
 		Reporter.log("Edit Organization",true);
 		homePage h=new homePage(driver);
 		adminPage p=new adminPage(driver);
@@ -43,9 +43,11 @@ public class demo extends BaseClass {
 		p.getEmailTb().clear();
 		//send input to email text box
 		p.getEmailTb().sendKeys(email);
+		p.getSavebtn().click();
+		
 		//reading the data which is present in organization text box with our excel data
-		String Actualorg=p.getOrganizationNametbx().getAttribute("value");
-		Assert.assertEquals(Actualorg, "sathya");
+		//String Actualorg=p.getOrganizationNametbx().getAttribute("value");
+		//Assert.assertEquals(Actualorg, orgname);
 	}
 
 }
